@@ -10,7 +10,10 @@ import { customincrement } from 'src/app/shared/store/counter.actions';
 export class CustomcounterComponent {
   constructor(private store: Store<{ counter: { counter: number } }>) {}
   counterinput!: number;
+  actiontype = 'Increment';
   onIncrement() {
-    this.store.dispatch(customincrement({ value: +this.counterinput }));
+    this.store.dispatch(
+      customincrement({ value: +this.counterinput, action: this.actiontype }),
+    );
   }
 }

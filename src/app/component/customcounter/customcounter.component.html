@@ -8,6 +8,15 @@
       required
       [(ngModel)]="counterinput"
     />
+
+    <!-- Dropdown menu -->
+    <label for="Action"> Select Action Type:</label>
+
+    <select [(ngModel)]="actiontype">
+      <option value="Increment">Increment</option>
+      <option value="Decrement">Decrement</option>
+    </select>
+
     <button
       (click)="onIncrement()"
       class="rounded-full border-2 border-gray-500 bg-transparent px-6 py-2.5 text-sm font-medium text-gray-700"
