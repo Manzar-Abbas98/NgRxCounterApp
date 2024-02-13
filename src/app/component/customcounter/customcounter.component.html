@@ -1,0 +1,18 @@
+<div class="mt-9 flex flex-col items-center justify-center gap-4">
+  <div class="flex flex-col items-center gap-4 text-center">
+    <input
+      type="number"
+      id="first_name"
+      class="text-gray-90000 block rounded-full border border-gray-300 bg-gray-50 p-2.5 text-sm md:w-72"
+      placeholder="Type any Custom Number"
+      required
+      [(ngModel)]="counterinput"
+    />
+    <button
+      (click)="onIncrement()"
+      class="rounded-full border-2 border-gray-500 bg-transparent px-6 py-2.5 text-sm font-medium text-gray-700"
+    >
+      Custom Increment
+    </button>
+  </div>
+</div>
