@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { AppStateModel } from 'src/app/shared/store/Global/AppState.Model';
 import { counterModel } from 'src/app/shared/store/counter.model';
 import { getcounter } from 'src/app/shared/store/counter.selector';
 
@@ -10,7 +11,7 @@ import { getcounter } from 'src/app/shared/store/counter.selector';
   styleUrls: ['./counterdisplay.component.css'],
 })
 export class CounterdisplayComponent implements OnInit, OnDestroy {
-  constructor(private store: Store<{ counter: counterModel }>) {}
+  constructor(private store: Store<AppStateModel>) {}
   counterdisplay!: number;
   channelname = '';
   counterSubscribe!: Subscription;
