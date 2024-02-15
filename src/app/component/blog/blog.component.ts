@@ -5,6 +5,7 @@ import { BlogModel } from 'src/app/shared/store/blog/blog.model';
 import { getblog } from 'src/app/shared/store/blog/blog.selector';
 import { AddblogComponent } from '../addblog/addblog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { deleteblog } from 'src/app/shared/store/blog/blog.actions';
 
 @Component({
   selector: 'app-blog',
@@ -32,6 +33,11 @@ export class BlogComponent implements OnInit {
     console.log(id);
     this.OpenPopup(id, 'Edit Blog', true);
     // this.router.navigate(['blog/edit/' + id]);
+  }
+  RemoveBlog(id: any) {
+    if (confirm('Are you sure want to remove?')) {
+      this.store.dispatch(deleteblog({ id: id }));
+    }
   }
 
   OpenPopup(id: any, title: any, isedit = false) {

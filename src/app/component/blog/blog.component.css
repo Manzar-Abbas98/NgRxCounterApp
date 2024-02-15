@@ -6,9 +6,3 @@
 .mdc-button {
   margin: 2px;
 }
-
-.cdk-global-overlay-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
