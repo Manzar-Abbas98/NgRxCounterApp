@@ -2,6 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 
 import {
   addblog,
+  addblogsuccess,
   deleteblog,
   loadblog,
   loadblogfail,
@@ -35,9 +36,17 @@ const _blogReducer = createReducer(
     };
   }),
 
-  on(addblog, (state, action) => {
+  // on(addblog, (state, action) => {
+  //   const _blog = { ...action.bloginput };
+  //   _blog.id = state.bloglist.length + 1;
+  //   return {
+  //     ...state,
+  //     bloglist: [...state.bloglist, _blog],
+  //   };
+  // }),
+
+  on(addblogsuccess, (state, action) => {
     const _blog = { ...action.bloginput };
-    _blog.id = state.bloglist.length + 1;
     return {
       ...state,
       bloglist: [...state.bloglist, _blog],
