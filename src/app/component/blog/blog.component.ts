@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppStateModel } from 'src/app/shared/store/Global/AppState.Model';
-import { BlogModel } from 'src/app/shared/store/blog/blog.model';
-import { getblog } from 'src/app/shared/store/blog/blog.selector';
+import { BlogModel, Blogs } from 'src/app/shared/store/blog/blog.model';
+import { getblog, getbloginfo } from 'src/app/shared/store/blog/blog.selector';
 import { AddblogComponent } from '../addblog/addblog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { deleteblog } from 'src/app/shared/store/blog/blog.actions';
+import { deleteblog, loadblog } from 'src/app/shared/store/blog/blog.actions';
 
 @Component({
   selector: 'app-blog',
@@ -19,10 +19,12 @@ export class BlogComponent implements OnInit {
   ) {}
 
   bloglist!: BlogModel[];
+  bloginfo!: Blogs;
+
   ngOnInit(): void {
-    this.store.select(getblog).subscribe((item) => {
-      this.bloglist = item;
-      console.log(this.bloglist);
+    this.store.dispatch(loadblog());
+    this.store.select(getbloginfo).subscribe((item) => {
+      this.bloginfo = item;
     });
   }
 
@@ -32,7 +34,6 @@ export class BlogComponent implements OnInit {
   EditBlog(id: any) {
     console.log(id);
     this.OpenPopup(id, 'Edit Blog', true);
-    // this.router.navigate(['blog/edit/' + id]);
   }
   RemoveBlog(id: any) {
     if (confirm('Are you sure want to remove?')) {

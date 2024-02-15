@@ -1,14 +1,37 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { addblog, deleteblog, loadblog, updateblog } from './blog.actions';
-import { Blogstate } from './blog.state';
+import {
+  addblog,
+  deleteblog,
+  loadblog,
+  loadblogfail,
+  loadblogsuccess,
+  updateblog,
+} from './blog.actions';
+import { BlogState } from './blog.state';
 import { BlogModel } from './blog.model';
 
 const _blogReducer = createReducer(
-  Blogstate,
+  BlogState,
   on(loadblog, (state) => {
     return {
       ...state,
+    };
+  }),
+
+  on(loadblogsuccess, (state, action) => {
+    return {
+      ...state,
+      bloglist: [...action.bloglist],
+      Errormessage: '',
+    };
+  }),
+
+  on(loadblogfail, (state, action) => {
+    return {
+      ...state,
+      bloglist: [],
+      Errormessage: action.Errortext.message,
     };
   }),
 

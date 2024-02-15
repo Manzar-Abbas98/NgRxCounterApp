@@ -25,6 +25,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { BlogEffects } from './shared/store/blog/blog.Effects';
 
 @NgModule({
   declarations: [
@@ -48,9 +51,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     MatCardModule,
     MatInputModule,
+    HttpClientModule,
     MatSelectModule,
     MatFormFieldModule,
     MatToolbarModule,
+    EffectsModule.forRoot([BlogEffects]),
     MatIconModule,
     MatMenuModule,
     MatDialogModule,
